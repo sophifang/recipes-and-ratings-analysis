@@ -54,3 +54,9 @@ Our permutation test simulated 500 TVD results by randomly shuffling `rating_typ
 \
 Our results return a p-value of 0.032, and given a significance level of $\alpha$ = 0.05, we reject the null, meaning that the distribution of `rating_type` when `description` is missing is the same as the distribution of `rating_type` when `description` is not missing. Hence, we can conclude that the missingness in the `description` column is dependent on the values in the `rating_type` column. This means that the missingness in `description` is missing at random (MAR) because the likelihood that a value is missing in `description` depends on the value in the `rating_type` column.
 ## Hypothesis Testing
+As college students, we often don't have a lot of time to put together meals and are constantly on the look out for quick and easy recipes. That's why we were curious as to if the recipe preparation time affects the recipe rating. We will be doing a permutation test with the following parameters:\
+**Null Hypothesis:**
+**Alternative Hypothesis:**
+**Significance Level:**
+**p-value:**
+**Conclusion:**
