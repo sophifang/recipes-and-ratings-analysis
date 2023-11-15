@@ -21,8 +21,9 @@ On intial look, the two columns look similar, which is evidence that `descriptio
 {insert double bar chart}\
 \
 From the pivot table and bar plot, we saw that the distribution of `steps` is similar whetehr or not `description` is missing. However, to make it precise what we mean by "similar," we can run a permutation test comparing the following distributions:
-1. The distribution of `steps` when `description` is missing.
-2. The distribution of `steps` when `description` is not missing.\
+  1. The distribution of `steps` when `description` is missing.
+  2. The distribution of `steps` when `description` is not missing.\
+\
 Because we are trying to measure the "distance" between two categorical distributions, we will use total variation distance (TVD) for our test statistic for this permutation test. Because we are comparing two categories, the TVD is the same as the absolute difference in proportions for either category.\
 \
 Our permutation test simulated 500 TVD results by randomly shuffling `steps`. The histogram below visualizes the TVD distribution as well as plots the observed TVD. \
