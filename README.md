@@ -22,8 +22,13 @@ On intial look, the two columns look similar, which is evidence that `descriptio
 \
 From the pivot table and bar plot, we saw that the distribution of `steps` is similar whetehr or not `description` is missing. However, to make it precise what we mean by "simila," we can run a permutation test comparing the following distributions:
 1. The distribution of `steps` when `description` is missing.
-2. The distribution of `steps` when `description` is not missing.
+2. The distribution of `steps` when `description` is not missing.\
 Because we are trying to measure the "distance" between two categorical distributions, we will use total variation distance (TVD) for our test statistic for this permutation test. Because we are comparing two categories, the TVD is the same as the absolute difference in proportions for either category.\
 \
-Our permutation test simulated 500 TVD results by randomly shuffling `steps`. Our results show that 
+Our permutation test simulated 500 TVD results by randomly shuffling `steps`. The histogram below visualizes the TVD distribution as well as plots the observed TVD. \
+{insert histogram}\
+\
+Our results return a p-value of 0.296, and given a significance level of $\alpha$ = 0.05, we fail to reject the null that the distribution of `steps` when `description` is missing is the same as the distribution of `steps` when `description` is not missing. Hence, we can conclude that the missingness in the `description` column is not dependent on the values in the `steps` column. However, this "fail to reject" result means that this permutation test does not give us any concrete clue of which missingness mechanism is being displayed in `description`. In order to figure out whether `description` is MAR or MCAR, we need to compare `description` with other columns in the DataFrame.
+#### Description and Rating
+
 ## Hypothesis Testing
