@@ -134,12 +134,12 @@ Now let's take a look at another column: `description`. Assessing the missingnes
 The first column we decided to compare `description` with the number of steps in the recipe. Instead of directly comparing `n_steps` to `description`, we decided to split `n_steps` to two categories assigned to a new `steps` column: `few`, recipes with `n_steps` 9 or less (approximately the median of `n_steps`); and `many`, recipes with `n_steps` greater than 9. The null hypothesis for this test is that the distribution of `steps` when `description` is missing is the same as the distribution of `steps` when `description` is not missing. The alternative hypothesis is that the distribution of `steps` when `description` is missing is not the same as the distribution of `steps` when `description` is not missing.\
 \
 First we compared the null and non-null `description` distributions for `steps`.\
-\
+
 |   description_missing = False |   description_missing = True |
 |------------------------------:|-----------------------------:|
 |                       0.54973 |                     0.485714 |
 |                       0.45027 |                     0.514286 |
-\
+
 On intial look, the two columns look similar, which is evidence that `description`'s missingness does not depend on `steps`. In other words, knowing that a recipe takes fewer steps doesn't make it any more or less likely that the recipe's description is missing than knowing if the recipe takes more steps.\
 \
 <iframe src="assets/steps_dist_viz.html" width=800 height=600 frameBorder=0></iframe>\
