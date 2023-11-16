@@ -116,7 +116,11 @@ Examining the heatmap, we chose to investigate the association between the total
 {input scatterplot}
 
 ### Interesting Aggregates
-For our interesting aggregates, we studied the average ratings and each value of nutrition. This is our pivot table for rating and the values in `nutrition`
+For our interesting aggregates, we studied the average ratings and each value of nutrition.
+This is our pivot table for rating and the values in `nutrition`\
+{pivot table}
+This is the plot we made for out pivot table\
+{bar graph}
 
 ## Assessment of Missingness
 After cleaning our data, we noticed that we had a couple of columns containing null values. In this section, we will assessing the various types of missingness in our DataFrame.
