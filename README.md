@@ -203,6 +203,6 @@ As college students, we often don't have a lot of time to put together meals and
 **Alternative Hypothesis:** There is a difference in ratings between recipes with a quick cooking time (< 20 minutes) and a longer cooking time (20+ minutes).\
 **Test Statistic**: For this permutation test, we will be using the difference between group means (average rating of recipes with long cooking time - average rating of recipes with quick cooking time)\
 **Significance Level:** We chose a significance level of 5%\
-<iframe src="assets/differences_fig.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="assets/differences_fig.html" width=900 height=600 frameBorder=0></iframe>
 **p-value:** 1.0\
 **Conclusion:** We fail to reject the null, meaning that there is a difference in ratings between recipes with a quick cooking time (< 20 minutes) and a longer cooking time (20+ minutes).
