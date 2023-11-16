@@ -118,8 +118,16 @@ Examining the heatmap, we chose to investigate the association between the total
 ### Interesting Aggregates
 For our interesting aggregates, we studied the average ratings and each value of nutrition.
 This is our pivot table for rating and the values in `nutrition`\
-{pivot table}
-This is the plot we made for out pivot table\
+
+|   rating_integer |   carbohydrates |   protein |   saturated_fat |   sodium |   sugar |   total_fat |
+|-----------------:|----------------:|----------:|----------------:|---------:|--------:|------------:|
+|                1 |         14.8571 |   29.4048 |         44.0799 |  45.4864 | 76.3367 |     34.5561 |
+|                2 |         15.5781 |   31.9141 |         48.1953 |  32.7969 | 76.4234 |     35.5266 |
+|                3 |         14.9642 |   33.4653 |         39.0406 |  37.4325 | 81.7409 |     31.7338 |
+|                4 |         13.6708 |   35.2527 |         38.7613 |  28.169  | 62.6682 |     31.5453 |
+|                5 |         13.7361 |   32.7285 |         40.4875 |  28.5728 | 69.2263 |     32.8387 |
+
+This is the plot we made for out pivot table
 <iframe src="assets/avg_nutrition.html" width=800 height=600 frameBorder=0></iframe>
 
 ## Assessment of Missingness
