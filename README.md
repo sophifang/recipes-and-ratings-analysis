@@ -92,6 +92,7 @@ dtype: object
 ```
 
 The cleaned dataframe is shown below with the columns we have selected for our question we want to investigate that examines the correlation between the amount of minutes it takes to prepare the meal and its respective ratings.
+
 print(cleaned_df[['name', 'minutes', 'rating']].head().to_markdown(index=False))
 
 ### Univariate Analysis
