@@ -1,6 +1,103 @@
 # Food.com Recipe Analysis
 ## Introduction
+This project dives into the world of cooking by taking a look at datasets consisting of recipes and their respective ratings. There are many recipes out there from the finest ones curated to every detail to those created from quickly throwing ingredients together. Some people do not mind spending hours or days of their time preparing a meal, but is it really worth the time and effort? With such an extensive dataset, we will investigate the correlation between the cooking time and average rating of recipes to see if recipes that take more time are rated higher than the recipes that take less time.
+
+### Datasets Used
+We will be looking at two datasets collected from food.com containing recipes and ratings posted since 2008.
+
+This first dataset is for recipes. Recipes contains 83,782 rows for each recipe name and 12 columns of the following descriptions:
+|Column	                 |Description|
+|---                     |---        |
+|`'name'	`              |Recipe name|
+|`'id'`	                 |Recipe ID|
+|`'minutes'`	           |Minutes to prepare recipe|
+|`'contributor_id'`	     |User ID who submitted this recipe|
+|`'submitted'`	         |Date recipe was submitted|
+|`'tags'`	               |Food.com tags for recipe|
+|`'nutrition'`	         |Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein    (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value”|
+|`'n_steps'`	           |Number of steps in recipe|
+|`'steps'`	             |Text for recipe steps, in order|
+|`'description'`	       |User-provided description|
+|`'ingredients'`	       |Text for ingredients to prepare recipe|
+|`'n_ingredients'`	     |Number of ingredients|
+
+This second dataset is for ratings. Ratings contains 731,927 rows for each recipe id and 5 columns of the following descriptions:
+|Column|Description|
+|---   |---|
+|`'user_id'`	|User ID|
+|`'recipe_id'`|Recipe ID|
+|`'date'`	    |Date of interaction|
+|`'rating'`	  |Rating given|
+|`'review'`	  |Review text|
+
+To answer our question, we merged the datasets of Recipes and Ratings to be able to obtain the `ratings` column. The new merged dataframe has 13 columns and the same 83,782 rows as Recipes had. With this new merged dataframe, we then used the columns of `minutes` and `ratings` to see if there really is a relationship between the cooking time and average rating of recipes. 
+
 ## Cleaning and EDA
+### Data Cleaning
+Before cleaning the datasets, we looked at the data types for recipes and ratings to inspect which columns would need to be changed for our project.
+Recipes
+```
+name              object
+id                 int64
+minutes            int64
+contributor_id     int64
+submitted         object
+tags              object
+nutrition         object
+n_steps            int64
+steps             object
+description       object
+ingredients       object
+n_ingredients      int64
+dtype: object
+```
+
+Ratings
+```
+user_id       int64
+recipe_id     int64
+date         object
+rating        int64
+review       object
+dtype: object
+```
+
+We then used the following steps to clean our dataframe:
+1. **Left merge the recipes and ratings datasets together.**: There is data in the ratings dataset that we want to see alongside the recipes dataset. To be able to see all the information in one dataset, we had to merge the data together. Specifically, we wanted to keep all the original rows from the recipes dataset, so we used a left merge. By merging the two datasets, we are able to align the rows from each dataset based on their common attributes and columns, most importantly the `rating` column.
+2. **Fill all ratings of 0 with np.nan**: With the new merged dataframe, we want to modify the values in one column. This column is for `rating` and we filled all the ratings of 0 with np.nan because we did not consider them to be valid ratings. Instead, there will only be 5 possible values for ratings with the lowest rating being 1.
+3. **Take the average of the ratings column to assign to the recipes dataset**: There are multiple rows for each recipe with different ratings, so we took the average ratings of each recipe by using groupby on each recipe, applied it to the `rating` column, and took the mean. We then assign this new column of average ratings to the original recipes dataset to use for the rest of the project.
+4. **Convert columns into correct types**: There are columns in the dataset which are not the correct type. For example, let's examine the column for 'nutrition'. `nutrition` contains values that look like lists, but the values are actually strings that look like lists. We decided the data in the `nutrition` column would be useful for sections later in the project, so we wanted to extract them from the `nutrition` column and create columns for each individual value in the list from `nutrition`. This was done by splitting the values in the string lists and assigning new columns for each individual value from the `nutrition` list with their data type as floats. A few other columns were in a similar situation as 'nutrition'. These columns are `steps`, `tags`, and `ingredients`, where they contain values that look like lists, but the values are actually strings that look like lists. For `steps`, `tags`, and `ingredients`, we made sure they were lists by stripping the brackets and splitting each value. Lastly, the column for `submitted` originally kept values for dates, but its data type was originally an object. For this column, we used the pd.to_datetime method, so its data type would be an actual date. The final look at the data types for each column can be examined in the following descriptions:
+```
+name                      object
+id                         int64
+minutes                    int64
+contributor_id             int64
+submitted         datetime64[ns]
+tags                      object
+nutrition                 object
+n_steps                    int64
+steps                     object
+description               object
+ingredients               object
+n_ingredients              int64
+rating                   float64
+calories                 float64
+total fat                float64
+sugar                    float64
+sodium                   float64
+protein                  float64
+saturated fat            float64
+carbohydrates            float64
+dtype: object
+```
+
+The cleaned dataframe is shown below with the columns we have selected for our question we want to investigate that examines the correlation between the amount of minutes it takes to prepare the meal and its respective ratings.
+print(cleaned_df[['name', 'minutes', 'rating']].head().to_markdown(index=False))
+
+### Univariate Analysis
+### Bivariate Analysis
+### Interesting Aggregates
+
 ## Assessment of Missingness
 After cleaning our data, we noticed that we had a couple of columns containing null values. In this section, we will assessing the various types of missingness in our DataFrame.
 ### NMAR Analysis
