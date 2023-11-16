@@ -105,6 +105,11 @@ Next, we plotted a pie chart to show the distribution for the most used tags amo
 (pie chart for top 10 tags)
 
 ### Bivariate Analysis
+For the bivariate analysis, we wanted to see which pair of columns identified possible associations. To be able to see these possible associations among the columns of our dataset, we created a heatmap that shows how closely associated each value of `nutrition` was with the column of `rating`. 
+(input heatmap)
+Examining the heatmap, we chose to investigate the association between the total fat and calories of each recipe as our heatmap shows that the two columns show a very strong association other than the direct association of a 1. After we decided which columns to use for our bivariate analysis, we plotted the association using a scatterplot with `total_fat` as the independent variable and `calories` as the dependent variable. 
+(input scatterplot)
+
 
 ### Interesting Aggregates
 
