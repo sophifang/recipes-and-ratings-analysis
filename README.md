@@ -129,6 +129,7 @@ This is our pivot table for rating and the values in `nutrition`\
 
 This is the plot we made for out pivot table
 <iframe src="assets/avg_nutrition.html" width=800 height=600 frameBorder=0></iframe>
+The interesting result we found in the aggregates data is that there were many recipes that consisted of sugar the most compared to the other nutritional values. We also noticed recipes where sugar dominated the nutritional values also dominated in each rating.
 
 ## Assessment of Missingness
 After cleaning our data, we noticed that we had a couple of columns containing null values. In this section, we will assessing the various types of missingness in our DataFrame.
