@@ -6,20 +6,21 @@ This project dives into the world of cooking by taking a look at datasets consis
 We will be looking at two datasets collected from food.com containing recipes and ratings posted since 2008.
 
 This first dataset is for recipes. Recipes contains 83,782 rows for each recipe name and 12 columns of the following descriptions:
-|Column	                 |Description|
-|---                     |---        |
-|`'name'	`              |Recipe name|
-|`'id'`	                 |Recipe ID|
-|`'minutes'`	           |Minutes to prepare recipe|
-|`'contributor_id'`	     |User ID who submitted this recipe|
-|`'submitted'`	         |Date recipe was submitted|
-|`'tags'`	               |Food.com tags for recipe|
-|`'nutrition'`	         |Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein    (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value”|
-|`'n_steps'`	           |Number of steps in recipe|
-|`'steps'`	             |Text for recipe steps, in order|
-|`'description'`	       |User-provided description|
-|`'ingredients'`	       |Text for ingredients to prepare recipe|
-|`'n_ingredients'`	     |Number of ingredients|
+
+| Column         | Description                                                                                                                                                                                       |
+|:---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| name           | Recipe name                                                                                                                                                                                       |
+| id             | Recipe ID                                                                                                                                                                                         |
+| minutes        | Minutes to prepare recipe                                                                                                                                                                         |
+| contributor_id | User ID who submitted this recipe                                                                                                                                                                 |
+| submitted      | Date recipe was submitted                                                                                                                                                                         |
+| tags           | Food.com tags for recipe                                                                                                                                                                          |
+| nutrition      | Nutrition information in the form [calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]; PDV stands for “percentage of daily value” |
+| n_steps        | Number of steps in recipe                                                                                                                                                                         |
+| steps          | Text for recipe steps, in order                                                                                                                                                                   |
+| description    | User-provided description                                                                                                                                                                         |
+| ingredients    | Text for ingredients to prepare recipe                                                                                                                                                            |
+| n_ingredients  | Number of ingredients  
 
 This second dataset is for ratings. Ratings contains 731,927 rows for each recipe id and 5 columns of the following descriptions:
 |Column|Description|
