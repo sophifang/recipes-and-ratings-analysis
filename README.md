@@ -101,22 +101,19 @@ For the univariate analysis, we analyzed the distribution of the number of ingre
 We plotted a histogram to show the distribution for the number of ingredients of each recipe. The plot is approximately a normal distribution skewed to the right. This means the mode is the highest point of the curve, the median follows after at the point where it divides the area under the curve in half, and the mean shows the balance point as it is drawn toward the more extreme observations closer to the tail end of the distribution. The median and mean are not very easy to find by simply examining the distribution, but the mode is. Because the mode is the highest point of the distribution, we can say that the mode is approximately an 8. This means the most shared number of ingredients among a majority of the recipes is an 8.
 \
 {histogram for number of ingredients}\
-\
 
 Next, we plotted a pie chart to show the distribution for the most used tags among the recipes. There are many unique tags used in the dataset, specifically 549, so we wanted to see how often each tag was used by organizing them by their percentages. We chose to show only the top 10 because showing all 549 tags on one pie chart would not have been very helpful to look as they would have become too crowded and the data would be difficult to read. By showing the top 10 most used tags, we are able to provide a better understanding of what tags have been used the most, as well as how often they were used. The chart shows that the `preparation` and `time-to-make` tags were used the most with 16.1% and 15.5% respectively. This tells us that many people want to share their recipes by letting others know what their recipe will do and how long they will take.
 \
 {pie chart for top 10 tags}\
-\
 
 ### Bivariate Analysis
 For the bivariate analysis, we wanted to see which pair of columns identified possible associations. To be able to see these possible associations among the columns of our dataset, we created a heatmap that shows how closely associated each value of `nutrition` was with the column of `rating`. 
 \
 {input heatmap}\
-\
+
 Examining the heatmap, we chose to investigate the association between the total fat and calories of each recipe as our heatmap shows that the two columns show a very strong association other than the direct association of a 1. After we decided which columns to use for our bivariate analysis, we plotted the association using a scatterplot with `total_fat` as the independent variable and `calories` as the dependent variable. 
 \
 {input scatterplot}\
-\
 
 
 ### Interesting Aggregates
