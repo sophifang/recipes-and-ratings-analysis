@@ -159,9 +159,12 @@ Our results return a p-value of 0.296, and given a significance level of $\alpha
 Next we decided to compare `description` with whether or not the recipe recieved a high or low rating. Instead of directly comparing `rating` to `description`, we decided to split `rating` into two categories assigned to a new `rating_type` column: `low`, recipes with `rating` 3 or less; and `high`, recipes with `rating` greatered than 3. The null hypothesis for this test is that the distribution of `rating_type` when `description` is missing is the same as the distribution of `rating_type` when `description` is not missing. The alternative hypothesis is that the distribution of `rating_type` when `description` is missing is not the same as the distribution of `rating_type` when `description` is not missing.\
 \
 First we compared the null and non-null `description` distributions for `rating_type`.\
-\
-{insert chart}\
-\
+
+| rating_type   |   description_missing = False |   description_missing = True |
+|:--------------|------------------------------:|-----------------------------:|
+| bad           |                     0.0776113 |                     0.142857 |
+| good          |                     0.922389  |                     0.857143 |
+
 This time on intial look, the distribution of `rating_type` in the two group (`description_missing` == True and `description_missing` == False) is very different.\
 \
 <iframe src="assets/rating_dist_viz.html" width=800 height=600 frameBorder=0></iframe>\
