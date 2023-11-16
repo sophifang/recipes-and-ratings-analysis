@@ -23,13 +23,14 @@ This first dataset is for recipes. Recipes contains 83,782 rows for each recipe 
 | n_ingredients  | Number of ingredients  
 
 This second dataset is for ratings. Ratings contains 731,927 rows for each recipe id and 5 columns of the following descriptions:
-|Column|Description|
-|---   |---|
-|`'user_id'`	|User ID|
-|`'recipe_id'`|Recipe ID|
-|`'date'`	    |Date of interaction|
-|`'rating'`	  |Rating given|
-|`'review'`	  |Review text|
+
+| Column    | Description         |
+|:----------|:--------------------|
+| user_id   | User ID             |
+| recipe_id | Recipe ID           |
+| date      | Date of interaction |
+| rating    | Rating given        |
+| review    | Review text         |
 
 To answer our question, we merged the datasets of Recipes and Ratings to be able to obtain the `ratings` column. The new merged dataframe has 13 columns and the same 83,782 rows as Recipes had. With this new merged dataframe, we then used the columns of `minutes` and `ratings` to see if there really is a relationship between the cooking time and average rating of recipes. 
 
