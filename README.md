@@ -1,5 +1,5 @@
 # Food.com Recipe Analysis
-Authors: Sophia Fang and Carmen Truong
+#### Authors: Sophia Fang and Carmen Truong
 ---
 
 ## Introduction
