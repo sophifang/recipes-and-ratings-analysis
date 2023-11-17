@@ -122,6 +122,7 @@ For the bivariate analysis, we wanted to see which pair of columns identified po
 Examining the heatmap, we chose to investigate the association between the total fat and calories of each recipe as our heatmap shows that the two columns show a very strong association other than the direct association of a 1. After we decided which columns to use for our bivariate analysis, we plotted the association using a scatterplot with `total_fat` as the independent variable and `calories` as the dependent variable. 
 \
 <iframe src="assets/scatter.html" width=800 height=600 frameBorder=0></iframe>
+Examining the scatterplot, we could see there is a positive, linear relationship between total fat and calories. This positive, linear relationship implies there is a correlation between the total fat and calories of most recipes.
 
 ### Interesting Aggregates
 For our interesting aggregates, we studied the average ratings and each value of nutrition.
