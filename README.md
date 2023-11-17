@@ -149,7 +149,7 @@ Based on the aforementioned definitions, we can then conclude that the `rating` 
 ### Missingness Dependency
 Now let's take a look at another column: `description`. Assessing the missingness of this column, it is not missing by desgin (MD) because we can not determine the missing value exactly by looking at the other columns nor is it not missing at random (NMAR) because there is not a good reason why missingness depends on the values themselves. Now that we've ruled out MD and NMAR, we will consider the possibility of the missingness of the `description` column being missing at random (MAR). In order to do so, we must compare `description` with another column in the DataFrame through a permutation test.
 #### Description and Number of Steps
-The first column we decided to compare `description` with the number of steps in the recipe. Instead of directly comparing `n_steps` to `description`, we decided to split `n_steps` to two categories assigned to a new `steps` column: `few`, recipes with `n_steps` 9 or less (approximately the median of `n_steps`); and `many`, recipes with `n_steps` greater than 9. The null hypothesis for this test is that the distribution of `steps` when `description` is missing is the same as the distribution of `steps` when `description` is not missing. The alternative hypothesis is that the distribution of `steps` when `description` is missing is not the same as the distribution of `steps` when `description` is not missing.\
+The first column we decided to compare `description` with the number of steps in the recipe. Instead of directly comparing `n_steps` to `description`, we decided to split `n_steps` to two categories assigned to a new `steps_type` column: `few`, recipes with `n_steps` 9 or less (approximately the median of `n_steps`); and `many`, recipes with `n_steps` greater than 9. The null hypothesis for this test is that the distribution of `steps_type` when `description` is missing is the same as the distribution of `steps_type` when `description` is not missing. The alternative hypothesis is that the distribution of `steps_type` when `description` is missing is not the same as the distribution of `steps_type` when `description` is not missing.\
 \
 First we compared the null and non-null `description` distributions for `steps`.
 
@@ -158,21 +158,21 @@ First we compared the null and non-null `description` distributions for `steps`.
 | few          |                       0.54973 |                     0.485714 |
 | many         |                       0.45027 |                     0.514286 |
 
-On intial look, the two columns look similar, which is evidence that `description`'s missingness does not depend on `steps`. In other words, knowing that a recipe takes fewer steps doesn't make it any more or less likely that the recipe's description is missing than knowing if the recipe takes more steps.
+On intial look, the two columns look similar, which is evidence that `description`'s missingness does not depend on `steps_type`. In other words, knowing that a recipe takes fewer steps doesn't make it any more or less likely that the recipe's description is missing than knowing if the recipe takes more steps.
 
 <iframe src="assets/steps_dist_viz.html" width=800 height=600 frameBorder=0></iframe>
 
-From the pivot table and bar plot, we saw that the distribution of `steps` is similar whether or not `description` is missing. However, to make it precise what we mean by "similar," we can run a permutation test comparing the following distributions:
-  1. The distribution of `steps` when `description` is missing.
-  2. The distribution of `steps` when `description` is not missing.
+From the pivot table and bar plot, we saw that the distribution of `steps_type` is similar whether or not `description` is missing. However, to make it precise what we mean by "similar," we can run a permutation test comparing the following distributions:
+  1. The distribution of `steps_type` when `description` is missing.
+  2. The distribution of `steps_type` when `description` is not missing.
 
 
 Because we are trying to measure the "distance" between two categorical distributions, we will use total variation distance (TVD) for our test statistic for this permutation test. Because we are comparing two categories, the TVD is the same as the absolute difference in proportions for either category.\
 \
-Our permutation test simulated 500 TVD results by randomly shuffling `steps`. The histogram below visualizes the TVD distribution as well as plots the observed TVD.
+Our permutation test simulated 500 TVD results by randomly shuffling `steps_type`. The histogram below visualizes the TVD distribution as well as plots the observed TVD.
 <iframe src="assets/steps_fig.html" width=800 height=600 frameBorder=0></iframe>
 
-Our results return a p-value of 0.296, and given a significance level of 5%, we fail to reject the null that the distribution of `steps` when `description` is missing is the same as the distribution of `steps` when `description` is not missing. Hence, we can conclude that the missingness in the `description` column is not dependent on the values in the `steps` column. However, this "fail to reject" result means that this permutation test does not give us any concrete clue of which missingness mechanism is being displayed in `description`. In order to figure out whether `description` is MAR or MCAR, we need to compare `description` with other columns in the DataFrame.
+Our results return a p-value of 0.296, and given a significance level of 5%, we fail to reject the null that the distribution of `steps_type` when `description` is missing is the same as the distribution of `steps_type` when `description` is not missing. Hence, we can conclude that the missingness in the `description` column is not dependent on the values in the `steps_type` column. However, this "fail to reject" result means that this permutation test does not give us any concrete clue of which missingness mechanism is being displayed in `description`. In order to figure out whether `description` is MAR or MCAR, we need to compare `description` with other columns in the DataFrame.
 #### Description and Rating
 Next we decided to compare `description` with whether or not the recipe recieved a high or low rating. Instead of directly comparing `rating` to `description`, we decided to split `rating` into two categories assigned to a new `rating_type` column: `low`, recipes with `rating` 3 or less; and `high`, recipes with `rating` greatered than 3. The null hypothesis for this test is that the distribution of `rating_type` when `description` is missing is the same as the distribution of `rating_type` when `description` is not missing. The alternative hypothesis is that the distribution of `rating_type` when `description` is missing is not the same as the distribution of `rating_type` when `description` is not missing.\
 \
