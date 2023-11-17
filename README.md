@@ -1,7 +1,6 @@
 # Food.com Recipe Analysis
 
-```
-```
+---
 
 ## Introduction
 This project dives into the world of cooking by taking a look at datasets consisting of recipes and their respective ratings. There are many recipes out there from the finest ones curated to every detail to those created from quickly throwing ingredients together. There are people who do not mind spending hours or days of their time preparing a meal, but is it really worth the time and effort? With such an extensive dataset, we will investigate the correlation between the cooking time and average rating of recipes to see if recipes that take more time are rated higher than the recipes that take less time.
