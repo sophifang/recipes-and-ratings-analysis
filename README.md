@@ -106,27 +106,27 @@ The cleaned dataframe is shown below with the columns we have selected for our q
 ### Univariate Analysis
 For the univariate analysis, we analyzed the distribution of the number of ingredients and the top 10 most used tags among our extensive amount of recipes.
 
-We plotted a histogram to show the distribution for the number of ingredients of each recipe.\
-<iframe src="assets/dist_n_ingred.html" width=800 height=600 frameBorder=0></iframe>\
+We plotted a histogram to show the distribution for the number of ingredients of each recipe.
+<iframe src="assets/dist_n_ingred.html" width=800 height=600 frameBorder=0></iframe>
 The plot is approximately a normal distribution skewed to the right. This means the mode is the highest point of the curve, the median follows after at the point where it divides the area under the curve in half, and the mean shows the balance point as it is drawn toward the more extreme observations closer to the tail end of the distribution. The median and mean are not very easy to find by simply examining the distribution, but the mode is. Because the mode is the highest point of the distribution, we can say that the mode is approximately an 8. This means the most shared number of ingredients among a majority of the recipes is an 8.
 
-Next, we plotted a pie chart to show the distribution for the most used tags among the recipes. There are many unique tags used in the dataset, specifically 549, so we wanted to see how often each tag was used by organizing them by their percentages. We chose to show only the top 10 because showing all 549 tags on one pie chart would not have been very helpful to look as they would have become too crowded and the data would be difficult to read. By showing the top 10 most used tags, we are able to provide a better understanding of what tags have been used the most, as well as how often they were used.\
-<iframe src="assets/top_10_tags.html" width=800 height=600 frameBorder=0></iframe>\
+Next, we plotted a pie chart to show the distribution for the most used tags among the recipes. There are many unique tags used in the dataset, specifically 549, so we wanted to see how often each tag was used by organizing them by their percentages. We chose to show only the top 10 because showing all 549 tags on one pie chart would not have been very helpful to look as they would have become too crowded and the data would be difficult to read. By showing the top 10 most used tags, we are able to provide a better understanding of what tags have been used the most, as well as how often they were used.
+<iframe src="assets/top_10_tags.html" width=800 height=600 frameBorder=0></iframe>
 The chart shows that the `preparation` and `time-to-make` tags were used the most with 16.1% and 15.5% respectively. This tells us that many people want to share their recipes by letting others know what their recipe will do and how long they will take.
 
 ### Bivariate Analysis
 For the bivariate analysis, we wanted to see which pair of columns identified possible associations. To be able to see these possible associations among the columns of our dataset, we created a heatmap that shows how closely associated each value of `nutrition` was with the column of `rating`. 
-\
+
 <iframe src="assets/heatmap.html" width=800 height=600 frameBorder=0></iframe>
 
 Examining the heatmap, we chose to investigate the association between the total fat and calories of each recipe as our heatmap shows that the two columns show a very strong association other than the direct association of a 1. After we decided which columns to use for our bivariate analysis, we plotted the association using a scatterplot with `total_fat` as the independent variable and `calories` as the dependent variable. 
-\
+
 <iframe src="assets/scatter.html" width=800 height=600 frameBorder=0></iframe>
 Examining the scatterplot, we could see there is a positive, linear relationship between total fat and calories. This positive, linear relationship implies there is a correlation between the total fat and calories of most recipes.
 
 ### Interesting Aggregates
 For our interesting aggregates, we studied the average ratings and each value of nutrition.
-This is our pivot table for rating and the values in `nutrition`\
+This is our pivot table for rating and the values in `nutrition`
 
 |   rating_integer |   carbohydrates |   protein |   saturated_fat |   sodium |   sugar |   total_fat |
 |-----------------:|----------------:|----------:|----------------:|---------:|--------:|------------:|
@@ -151,7 +151,7 @@ Now let's take a look at another column: `description`. Assessing the missingnes
 #### Description and Number of Steps
 The first column we decided to compare `description` with the number of steps in the recipe. Instead of directly comparing `n_steps` to `description`, we decided to split `n_steps` to two categories assigned to a new `steps` column: `few`, recipes with `n_steps` 9 or less (approximately the median of `n_steps`); and `many`, recipes with `n_steps` greater than 9. The null hypothesis for this test is that the distribution of `steps` when `description` is missing is the same as the distribution of `steps` when `description` is not missing. The alternative hypothesis is that the distribution of `steps` when `description` is missing is not the same as the distribution of `steps` when `description` is not missing.\
 \
-First we compared the null and non-null `description` distributions for `steps`.\
+First we compared the null and non-null `description` distributions for `steps`.
 
 | steps_type   |   description_missing = False |   description_missing = True |
 |:-------------|------------------------------:|-----------------------------:|
@@ -159,9 +159,9 @@ First we compared the null and non-null `description` distributions for `steps`.
 | many         |                       0.45027 |                     0.514286 |
 
 On intial look, the two columns look similar, which is evidence that `description`'s missingness does not depend on `steps`. In other words, knowing that a recipe takes fewer steps doesn't make it any more or less likely that the recipe's description is missing than knowing if the recipe takes more steps.\
-\
-<iframe src="assets/steps_dist_viz.html" width=800 height=600 frameBorder=0></iframe>\
-\
+
+<iframe src="assets/steps_dist_viz.html" width=800 height=600 frameBorder=0></iframe>
+
 From the pivot table and bar plot, we saw that the distribution of `steps` is similar whether or not `description` is missing. However, to make it precise what we mean by "similar," we can run a permutation test comparing the following distributions:
   1. The distribution of `steps` when `description` is missing.
   2. The distribution of `steps` when `description` is not missing.
@@ -170,23 +170,23 @@ From the pivot table and bar plot, we saw that the distribution of `steps` is si
 Because we are trying to measure the "distance" between two categorical distributions, we will use total variation distance (TVD) for our test statistic for this permutation test. Because we are comparing two categories, the TVD is the same as the absolute difference in proportions for either category.\
 \
 Our permutation test simulated 500 TVD results by randomly shuffling `steps`. The histogram below visualizes the TVD distribution as well as plots the observed TVD. \
-<iframe src="assets/steps_fig.html" width=800 height=600 frameBorder=0></iframe>\
-\
+<iframe src="assets/steps_fig.html" width=800 height=600 frameBorder=0></iframe>
+
 Our results return a p-value of 0.296, and given a significance level of $\alpha$ = 0.05, we fail to reject the null that the distribution of `steps` when `description` is missing is the same as the distribution of `steps` when `description` is not missing. Hence, we can conclude that the missingness in the `description` column is not dependent on the values in the `steps` column. However, this "fail to reject" result means that this permutation test does not give us any concrete clue of which missingness mechanism is being displayed in `description`. In order to figure out whether `description` is MAR or MCAR, we need to compare `description` with other columns in the DataFrame.
 #### Description and Rating
 Next we decided to compare `description` with whether or not the recipe recieved a high or low rating. Instead of directly comparing `rating` to `description`, we decided to split `rating` into two categories assigned to a new `rating_type` column: `low`, recipes with `rating` 3 or less; and `high`, recipes with `rating` greatered than 3. The null hypothesis for this test is that the distribution of `rating_type` when `description` is missing is the same as the distribution of `rating_type` when `description` is not missing. The alternative hypothesis is that the distribution of `rating_type` when `description` is missing is not the same as the distribution of `rating_type` when `description` is not missing.\
 \
-First we compared the null and non-null `description` distributions for `rating_type`.\
+First we compared the null and non-null `description` distributions for `rating_type`.
 
 | rating_type   |   description_missing = False |   description_missing = True |
 |:--------------|------------------------------:|-----------------------------:|
 | bad           |                     0.0776113 |                     0.142857 |
 | good          |                     0.922389  |                     0.857143 |
 
-This time on intial look, the distribution of `rating_type` in the two group (`description_missing` == True and `description_missing` == False) is very different.\
-\
-<iframe src="assets/rating_dist_viz.html" width=800 height=600 frameBorder=0></iframe>\
-\
+This time on intial look, the distribution of `rating_type` in the two group (`description_missing` == True and `description_missing` == False) is very different.
+
+<iframe src="assets/rating_dist_viz.html" width=800 height=600 frameBorder=0></iframe>
+
 From the pivot table and bar plot, we saw that the distribution of `rating_type` is different depending on whether or not `description` is missing. However, to make it precise what we mean by "different," we can run a permutation test comparing the following distributions:
   1. The distribution of `rating_type` when `description` is missing.
   2. The distribution of `rating_type` when `description` is not missing.
@@ -195,15 +195,15 @@ From the pivot table and bar plot, we saw that the distribution of `rating_type`
 We will also be using TVD for the test statistic of this permutation test since we are trying to measure the "distance" between two categorical distributions (in the case, the TVD is the same as the absolute difference in proportions for either category).\
 \
 Our permutation test simulated 500 TVD results by randomly shuffling `rating_type`. The histogram below visualizes the TVD distribution as well as plots the observed TVD. \
-<iframe src="assets/rating_fig.html" width=800 height=600 frameBorder=0></iframe>\
-\
-Our results return a p-value of 0.032, and given a significance level of $\alpha$ = 0.05, we reject the null, meaning that the distribution of `rating_type` when `description` is missing is the same as the distribution of `rating_type` when `description` is not missing. Hence, we can conclude that the missingness in the `description` column is dependent on the values in the `rating_type` column. This means that the missingness in `description` is missing at random (MAR) because the likelihood that a value is missing in `description` depends on the value in the `rating_type` column.
+<iframe src="assets/rating_fig.html" width=800 height=600 frameBorder=0></iframe>
+
+Our results return a p-value of 0.032, and given a significance level of 5%, we reject the null, meaning that the distribution of `rating_type` when `description` is missing is the same as the distribution of `rating_type` when `description` is not missing. Hence, we can conclude that the missingness in the `description` column is dependent on the values in the `rating_type` column. This means that the missingness in `description` is missing at random (MAR) because the likelihood that a value is missing in `description` depends on the value in the `rating_type` column.
 ## Hypothesis Testing
 As college students, we often don't have a lot of time to put together meals and are constantly on the look out for quick and easy recipes. That's why we were curious as to if the recipe preparation time affects the recipe rating. We will be doing a permutation test with the following parameters:\
 **Null Hypothesis:** There is no difference in ratings between recipes with a quick cooking time (< 20 minutes) and a longer cooking time (20+ minutes).\
 **Alternative Hypothesis:** There is a difference in ratings between recipes with a quick cooking time (< 20 minutes) and a longer cooking time (20+ minutes).\
 **Test Statistic**: For this permutation test, we will be using the difference between group means (average rating of recipes with long cooking time - average rating of recipes with quick cooking time)\
-**Significance Level:** We chose a significance level of 5%\
+**Significance Level:** We chose a significance level of 5%
 <iframe src="assets/differences_fig.html" width=900 height=600 frameBorder=0></iframe>
 **p-value:** 1.0\
 **Conclusion:** We fail to reject the null, meaning that there is a difference in ratings between recipes with a quick cooking time (< 20 minutes) and a longer cooking time (20+ minutes).
