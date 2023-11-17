@@ -158,7 +158,7 @@ First we compared the null and non-null `description` distributions for `steps`.
 | few          |                       0.54973 |                     0.485714 |
 | many         |                       0.45027 |                     0.514286 |
 
-On intial look, the two columns look similar, which is evidence that `description`'s missingness does not depend on `steps`. In other words, knowing that a recipe takes fewer steps doesn't make it any more or less likely that the recipe's description is missing than knowing if the recipe takes more steps.\
+On intial look, the two columns look similar, which is evidence that `description`'s missingness does not depend on `steps`. In other words, knowing that a recipe takes fewer steps doesn't make it any more or less likely that the recipe's description is missing than knowing if the recipe takes more steps.
 
 <iframe src="assets/steps_dist_viz.html" width=800 height=600 frameBorder=0></iframe>
 
@@ -169,7 +169,7 @@ From the pivot table and bar plot, we saw that the distribution of `steps` is si
 
 Because we are trying to measure the "distance" between two categorical distributions, we will use total variation distance (TVD) for our test statistic for this permutation test. Because we are comparing two categories, the TVD is the same as the absolute difference in proportions for either category.\
 \
-Our permutation test simulated 500 TVD results by randomly shuffling `steps`. The histogram below visualizes the TVD distribution as well as plots the observed TVD. \
+Our permutation test simulated 500 TVD results by randomly shuffling `steps`. The histogram below visualizes the TVD distribution as well as plots the observed TVD.
 <iframe src="assets/steps_fig.html" width=800 height=600 frameBorder=0></iframe>
 
 Our results return a p-value of 0.296, and given a significance level of $\alpha$ = 0.05, we fail to reject the null that the distribution of `steps` when `description` is missing is the same as the distribution of `steps` when `description` is not missing. Hence, we can conclude that the missingness in the `description` column is not dependent on the values in the `steps` column. However, this "fail to reject" result means that this permutation test does not give us any concrete clue of which missingness mechanism is being displayed in `description`. In order to figure out whether `description` is MAR or MCAR, we need to compare `description` with other columns in the DataFrame.
@@ -194,7 +194,7 @@ From the pivot table and bar plot, we saw that the distribution of `rating_type`
 
 We will also be using TVD for the test statistic of this permutation test since we are trying to measure the "distance" between two categorical distributions (in the case, the TVD is the same as the absolute difference in proportions for either category).\
 \
-Our permutation test simulated 500 TVD results by randomly shuffling `rating_type`. The histogram below visualizes the TVD distribution as well as plots the observed TVD. \
+Our permutation test simulated 500 TVD results by randomly shuffling `rating_type`. The histogram below visualizes the TVD distribution as well as plots the observed TVD.
 <iframe src="assets/rating_fig.html" width=800 height=600 frameBorder=0></iframe>
 
 Our results return a p-value of 0.032, and given a significance level of 5%, we reject the null, meaning that the distribution of `rating_type` when `description` is missing is the same as the distribution of `rating_type` when `description` is not missing. Hence, we can conclude that the missingness in the `description` column is dependent on the values in the `rating_type` column. This means that the missingness in `description` is missing at random (MAR) because the likelihood that a value is missing in `description` depends on the value in the `rating_type` column.
