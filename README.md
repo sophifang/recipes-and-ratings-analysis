@@ -205,7 +205,7 @@ As college students, we often don't have a lot of time to put together meals and
 **Test Statistic**: For this permutation test, we will be using the difference between group means (average rating of recipes with long cooking time - average rating of recipes with quick cooking time)\
 **Significance Level:** We chose a significance level of 5%\
 \
-Our permutation test simulated 500 differences between randomly shuffled fast and slow recipe cooking times (fast - slow). The histogram below visualizes the distribution of differences as well as plots the observed difference (fast - slow).
+Instead of directly comparing `minutes ` to `average_rating`, we decided to split `minutes` into two categories assigned to a new `speed` column: `fast`, recipes that take less than 20 minutes to prepare; and `slow`, recipes that take 20 or more minutes to complete. Our permutation test simulated 500 differences between randomly shuffled fast and slow recipe cooking times (fast - slow). The histogram below visualizes the distribution of differences as well as plots the observed difference (fast - slow).
 <iframe src="assets/differences_fig.html" width=900 height=600 frameBorder=0></iframe>
 **p-value:** 1.0\
 **Conclusion:** Our results return a p-value of 1, and given a significance level of 5%, we reject the null, meaning that the distribution of ratings in recipes with a quick completion time is not the same as the ditribution of ratings in recipes with a slow completition time. We fail to reject the null, meaning that there is a difference in ratings between recipes with a quick cooking time (< 20 minutes) and a longer cooking time (20+ minutes).
