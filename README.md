@@ -138,7 +138,7 @@ This is our pivot table for each rating pulled from `rating` as an integer and t
 
 This is the plot we made for our pivot table.
 <iframe src="assets/avg_nutrition.html" width=800 height=600 frameBorder=0></iframe>
-The interesting result we found in the aggregates data is there were many recipes that consisted of sugar the most compared to the other nutritional values. This shows how much sugar a person would consume with these recipes according to the percent daily value, which is around 60-80% per rating.
+The interesting result we found in the aggregates data is there were many recipes that consisted of sugar the most compared to the other nutritional values. This shows how much sugar a person would consume with these recipes depending on the percent daily value, which is around 60-80% per rating.
 
 ## Assessment of Missingness
 After cleaning our data, we noticed that we had a couple of columns containing null values. In this section, we will assessing the various types of missingness in our DataFrame.
